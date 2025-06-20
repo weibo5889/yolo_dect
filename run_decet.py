@@ -9,6 +9,8 @@ from Database_Helper import fetch_data_by_label as fd
 # 设置日志级别
 logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
+model = YOLO('decet.pt')
+
 
 def detect_labels(image_folder: str):
     """
@@ -24,14 +26,19 @@ def detect_labels(image_folder: str):
     """
     try:
         # 加載預訓練模型
-        model = YOLO('decet.pt')
+
         # 執行預測
-        results = model.predict(source=image_folder, save=True, conf=0.5)
+        results = model.predict(
+            source=image_folder, save=False, conf=0.5, imgsz=640, half=True, device="cpu"
+        )
+
         # 處理每個預測結果
         for r in results:
             if r.boxes is not None and len(r.boxes.cls) > 0:
-                label_idx = int(r.boxes.cls[0].cpu().numpy())  # 獲取標籤
-                label_name = model.names[label_idx]  # 獲取標籤名稱
-        return label_name
+                label_idx = int(r.boxes.cls[0].cpu().numpy())
+                return model.names[label_idx]
+
+        return "無辨識結果"
+
     except Exception as e:
-        return e
+        return f"錯誤：{str(e)}"
