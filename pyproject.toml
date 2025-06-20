@@ -6,10 +6,8 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.11"
-ultralytics = "^8.3.19"
-wxpython = "^4.2.2"
-pyinstaller = "6.2.0"
+python = ">=3.11,<3.12"
+ultralytics = "^8.3.19"=
 flask = "^3.1.1"
 flask-cors = "^6.0.0"
 folium = "^0.19.7"
