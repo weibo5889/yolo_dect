@@ -29,7 +29,7 @@ def detect_labels(image_folder: str):
 
         # 執行預測
         results = model.predict(
-            source=image_folder, save=False, conf=0.5, imgsz=640, half=True, device="cpu"
+            source=image_folder, save=False, conf=0.5, imgsz=512, half=False, device="cpu"
         )
 
         # 處理每個預測結果
