@@ -2,26 +2,25 @@
 __pycache__/
 *.py[cod]
 *.pyo
-*.pyd
 
-# Jupyter notebook checkpoints
-.ipynb_checkpoints/
-
-# Virtual environment
+# Virtual env
 venv/
 env/
 .venv/
 
-# VSCode / PyCharm
+# 模型、資料、檔案
+
+*.jpg
+*.png
+
+# 測試輸出與暫存
+runs/
+temp.*
+test.py
+
+# IDE 設定
 .vscode/
 .idea/
 
-# macOS
+# Mac 系統
 .DS_Store
-
-# 系統快取 / 日誌
-*.log
-
-# dotenv / secrets
-.env
-*.env
