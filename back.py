@@ -1,5 +1,7 @@
 import json
 import math
+import os
+import shutil
 import sqlite3
 import traceback
 
@@ -8,6 +10,22 @@ from flask_cors import CORS
 
 from place_Helper import get_nearby_places
 from run_decet import detect_labels
+
+
+def copy_ultralytics_settings():
+    source = os.path.join(os.path.dirname(__file__), 'config', 'settings.json')
+    target_dir = os.path.expanduser('~/.config/Ultralytics')
+    os.makedirs(target_dir, exist_ok=True)
+    target = os.path.join(target_dir, 'settings.json')
+
+    if not os.path.exists(target):
+        shutil.copy(source, target)
+        print("✅ 已將本地設定檔複製到 Ultralytics 設定資料夾")
+    else:
+        print("🔁 Ultralytics 設定檔已存在，略過複製")
+
+
+copy_ultralytics_settings()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -25,6 +43,19 @@ def clean_data(data):
         return data.lstrip()  # 去除開頭的空格
     else:
         return data
+
+
+def copy_ultralytics_settings():
+    source = os.path.join(os.path.dirname(__file__), 'config', 'settings.json')
+    target_dir = os.path.expanduser('~/.config/Ultralytics')
+    os.makedirs(target_dir, exist_ok=True)
+    target = os.path.join(target_dir, 'settings.json')
+
+    if not os.path.exists(target):
+        shutil.copy(source, target)
+        print("✅ 已將本地設定檔複製到 Ultralytics 設定資料夾")
+    else:
+        print("🔁 Ultralytics 設定檔已存在，略過複製")
 
 
 # 計算兩點之間的距離（哈弗賽公式）

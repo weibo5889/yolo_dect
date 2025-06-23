@@ -1,0 +1,20 @@
+{
+  "settings_version": "0.0.6",
+  "datasets_dir": "C:\\Users\\USER\\code\\datasets",
+  "weights_dir": "C:\\Users\\USER\\code\\school_yolo\\weights",
+  "runs_dir": "C:\\Users\\USER\\code\\school_yolo\\runs",
+  "uuid": "e28914e8c44a62c84339d57e95ab8e2edd0f13f7efddc1d101dcc899ff872d40",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "hub": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": true,
+  "wandb": true,
+  "vscode_msg": true
+}
